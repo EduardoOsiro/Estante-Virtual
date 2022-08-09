@@ -1,1 +1,1 @@
-# RedFoc-PokemonGo
+# RedFox-PokemonGo
