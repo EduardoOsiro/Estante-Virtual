@@ -1,6 +1,6 @@
-import app from './controller/app'
-import { competitionRouter } from './router/competitionRouter'
-import { resultRouter } from './router/resultRouter'
+import app from './Controller/app'
+import { competitionRouter } from './Router/competitionRouter'
+import { resultRouter } from './Router/resultRouter'
 
 app.use('/competition', competitionRouter)
 

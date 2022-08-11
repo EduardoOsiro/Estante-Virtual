@@ -1,4 +1,4 @@
-import CompetitionBusiness from "../src/business/CompetitionBusiness"
+import CompetitionBusiness from "../src/Business/CompetitionBusiness"
 
 const inputMock = {
     competition_name: 'Dardo' as any,

@@ -1,5 +1,5 @@
-import { CustomError } from "../error/CustomError";
-import { createCompetitionDB } from "../model/types";
+import { CustomError } from "../CustomError/CustomError";
+import { createCompetitionDB } from "../Model/types";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class CompetitionDatabase extends BaseDatabase {

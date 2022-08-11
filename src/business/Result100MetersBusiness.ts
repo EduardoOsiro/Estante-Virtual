@@ -1,16 +1,16 @@
-import { CustomError } from "../error/CustomError";
-import { registerResultDB, registerResultMRasosDTO } from "../model/types";
-import { IdGenerator } from "../services/idGenerator";
-import { ResultDatabase } from "../data/ResultDatabase"
-import { CompetitionDatabase } from "../data/CompetitionDatabase";
+import { CustomError } from "../CustomError/CustomError";
+import { registerResultDB, registerResultMetersDTO } from "../Model/types";
+import { IdGenerator } from "../Services/idGenerator";
+import { ResultDatabase } from "../Database/ResultDatabase"
+import { CompetitionDatabase } from "../Database/CompetitionDatabase";
 
-export class ResultBusinessMRasos {
+export class ResultBusinessMeters {
     constructor(
         private idGenerator: IdGenerator,
         private competitionDataBase: CompetitionDatabase,
         private resultDatabase: ResultDatabase
     ) { }
-    async registerResult100MRasos(input: registerResultMRasosDTO) {
+    async registerResult100Meters(input: registerResultMetersDTO) {
         try {
             const { competition_name, athlete_name, highest_value, unity } = input
             if (!competition_name || !athlete_name || !highest_value || !unity) {
@@ -33,7 +33,7 @@ export class ResultBusinessMRasos {
                 highest_value,
                 unity
             }
-            await this.resultDatabase.registerResult100MRasos(register)
+            await this.resultDatabase.registerResult100Meters(register)
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)
         }
@@ -46,14 +46,14 @@ export class ResultBusinessMRasos {
             throw new CustomError(422, 'Competition closed')
         }
     }
-    async getRanking100MRasos(competition_name: string) {
+    async getRanking100Meters(competition_name: string) {
         try {
             const competition = await this.competitionDataBase.searchCompetition(competition_name)
             if (competition.length === 0) {
                 throw new CustomError(422, 'Competition not found')
             }
 
-            const ranking = await this.resultDatabase.getRanking100MRasos(competition_name)
+            const ranking = await this.resultDatabase.getRanking100Meters(competition_name)
 
             return ranking
         } catch (error: any) {
@@ -62,7 +62,7 @@ export class ResultBusinessMRasos {
     }
 }
 
-export default new ResultBusinessMRasos(
+export default new ResultBusinessMeters(
     new IdGenerator(),
     new CompetitionDatabase(),
     new ResultDatabase()

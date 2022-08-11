@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import competitionBusiness from "../business/CompetitionBusiness"
-import { createCompetitionDTO } from "../model/types"
+import competitionBusiness from "../Business/CompetitionBusiness"
+import { createCompetitionDTO } from "../Model/types"
 
 export class CompetitionController {
     async createCompetition(req: Request, res: Response): Promise<void> {

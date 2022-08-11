@@ -1,8 +1,8 @@
-import ResultBusinessMRasos from "../src/business/ResultBusiness100MRasos"
+import ResultBusinessMeters from "../src/Business/Result100MetersBusiness"
 
 const inputMock = {
     competition_name: '100m Rasos' as any,
-    athlete_name: 'Ariane' as any,
+    athlete_name: 'Eduardo' as any,
     highest_value: '70' as any,
     unity: 's' as any
 }
@@ -12,7 +12,7 @@ describe('test Result Business', () => {
         const input = inputMock
         input.competition_name = ''
         try {
-            await ResultBusinessMRasos.registerResult100MRasos(input)
+            await ResultBusinessMeters.registerResult100Meters(input)
         } catch (error: any) {
             input.competition_name = '100m Rasos'
             expect(error.message).toEqual('Invalid Parameter')
@@ -24,9 +24,9 @@ describe('test Result Business', () => {
         const input = inputMock
         input.athlete_name = ''
         try {
-            await ResultBusinessMRasos.registerResult100MRasos(input)
+            await ResultBusinessMeters.registerResult100Meters(input)
         } catch (error: any) {
-            input.athlete_name = 'Ariane'
+            input.athlete_name = 'Eduardo'
             expect(error.message).toEqual('Invalid Parameter')
         } finally {
             expect.assertions(1)
@@ -36,7 +36,7 @@ describe('test Result Business', () => {
         const input = inputMock
         input.highest_value = ''
         try {
-            await ResultBusinessMRasos.registerResult100MRasos(input)
+            await ResultBusinessMeters.registerResult100Meters(input)
         } catch (error: any) {
             input.highest_value = '70'
             expect(error.message).toEqual('Invalid Parameter')
@@ -48,7 +48,7 @@ describe('test Result Business', () => {
         const input = inputMock
         input.unity = ''
         try {
-            await ResultBusinessMRasos.registerResult100MRasos(input)
+            await ResultBusinessMeters.registerResult100Meters(input)
         } catch (error: any) {
             input.unity = 's'
             expect(error.message).toEqual('Invalid Parameter')

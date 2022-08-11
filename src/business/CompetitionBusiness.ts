@@ -1,7 +1,7 @@
-import { CustomError } from "../error/CustomError";
-import { createCompetitionDB, createCompetitionDTO } from "../model/types";
-import { IdGenerator } from "../services/idGenerator";
-import { CompetitionDatabase } from "../data/CompetitionDatabase";
+import { CustomError } from "../CustomError/CustomError";
+import { createCompetitionDB, createCompetitionDTO } from "../Model/types";
+import { IdGenerator } from "../Services/idGenerator";
+import { CompetitionDatabase } from "../Database/CompetitionDatabase";
 
 export class CompetitionBusiness {
     constructor(

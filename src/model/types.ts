@@ -6,7 +6,7 @@ export type createCompetitionDTO = {
  
  export type createCompetitionDB = createCompetitionDTO & { id_competition: string }
  
- export type registerResultDardoDTO = {
+ export type registerResultDartDTO = {
      competition_name: string,
      athlete_name: string,
      highest_value: string,
@@ -15,13 +15,13 @@ export type createCompetitionDTO = {
      unity: string
  }
  
- export type registerResultsDB = registerResultDardoDTO & { id_athlete: string }
+ export type registerResultsDB = registerResultDartDTO & { id_athlete: string }
  
- export type registerResultMRasosDTO = {
+ export type registerResultMetersDTO = {
      competition_name: string,
      athlete_name: string,
      highest_value: string,
      unity: string
  }
  
- export type registerResultDB = registerResultMRasosDTO & { id_athlete: string } 
+ export type registerResultDB = registerResultMetersDTO & { id_athlete: string } 
