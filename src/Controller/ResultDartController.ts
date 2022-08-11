@@ -1,13 +1,13 @@
 import { Request, Response } from "express"
-import ResultBusinessDardo from "../business/ResultBusinessDardo"
-import resultBusinessDardo from "../business/ResultBusinessDardo"
-import { registerResultDardoDTO } from "../model/types"
+import ResultBusinessDart from "../Business/ResultDartBusiness"
+import resultBusinessDart from "../Business/ResultDartBusiness"
+import { registerResultDartDTO } from "../Model/types"
 
-export class ResultDardoController {
-    async registerResultDardo(req: Request, res: Response): Promise<void> {
+export class ResultDartController {
+    async registerResultDart(req: Request, res: Response): Promise<void> {
         try {
             const { competition_name, athlete_name, highest_value, average_value, lowest_value, unity } = req.body
-            const input: registerResultDardoDTO = {
+            const input: registerResultDartDTO = {
                 competition_name,
                 athlete_name,
                 highest_value,
@@ -15,18 +15,18 @@ export class ResultDardoController {
                 lowest_value,
                 unity
             }
-            await resultBusinessDardo.registerResultDardo(input)
+            await resultBusinessDart.registerResultDart(input)
             res.status(200).send('Result registered successfully')
         } catch (error: any) {
             const { statusCode, message } = error
             res.status(statusCode || 400).send({ message })
         }
     }
-    async getRankingDardo(req: Request, res: Response): Promise<void> {
+    async getRankingDart(req: Request, res: Response): Promise<void> {
         try {
             const competition_name = 'Dardo'
 
-            const result = await ResultBusinessDardo.getRankingDardo(competition_name)
+            const result = await ResultBusinessDart.getRankingDart(competition_name)
 
             res.status(200).send(result)
         } catch (error: any) {
@@ -36,5 +36,5 @@ export class ResultDardoController {
 }
 }
 
-export default new ResultDardoController(
+export default new ResultDartController(
 )

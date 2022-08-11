@@ -1,5 +1,5 @@
 import { Router } from "express";
-import competitionController from "../controller/CompetitionController";
+import competitionController from "../Controller/CompetitionController";
 
 export const competitionRouter = Router()
 

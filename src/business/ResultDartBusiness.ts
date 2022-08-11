@@ -1,16 +1,19 @@
-import { CustomError } from "../error/CustomError";
-import { registerResultDardoDTO, registerResultsDB } from "../model/types";
-import { IdGenerator } from "../services/idGenerator";
-import { ResultDatabase } from "../data/ResultDatabase";
-import { CompetitionDatabase } from "../data/CompetitionDatabase";
+import { CustomError } from "../CustomError/CustomError";
+import { registerResultDartDTO, registerResultsDB } from "../Model/types";
+import { IdGenerator } from "../Services/idGenerator";
+import { ResultDatabase } from "../Database/ResultDatabase";
+import { CompetitionDatabase } from "../Database/CompetitionDatabase";
 
-export class ResultBusinessDardo {
+export class ResultBusinessDart {
+    static registerResultDart(input: { competition_name: any; athlete_name: any; highest_value: any; average_value: any; lowest_value: any; unity: any; }) {
+        throw new Error("Method not implemented.");
+    }
     constructor(
         private idGenerator: IdGenerator,
         private competitionDataBase: CompetitionDatabase,
         private resultDatabase: ResultDatabase
     ) { }
-    async registerResultDardo(input: registerResultDardoDTO) {
+    async registerResultDart(input: registerResultDartDTO) {
         try {
             const { competition_name, athlete_name, highest_value, average_value, lowest_value, unity } = input
             if (!competition_name || !athlete_name || !highest_value || !average_value || !lowest_value || !unity) {
@@ -43,7 +46,7 @@ export class ResultBusinessDardo {
                 unity
             }
 
-            await this.resultDatabase.registerResultDardo(register)
+            await this.resultDatabase.registerResultDart(register)
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)
         }
@@ -56,14 +59,14 @@ export class ResultBusinessDardo {
             throw new CustomError(422, 'Competition closed')
         }
     }
-    async getRankingDardo(competition_name: string) {
+    async getRankingDart(competition_name: string) {
         try {
             const competition = await this.competitionDataBase.searchCompetition(competition_name)
             if (competition.length === 0) {
                 throw new CustomError(422, 'Competition not found')
             }
 
-            const ranking = await this.resultDatabase.getRankingDardo(competition_name)
+            const ranking = await this.resultDatabase.getRankingDart(competition_name)
 
             return ranking
 
@@ -75,7 +78,7 @@ export class ResultBusinessDardo {
     }
 }
 
-export default new ResultBusinessDardo(
+export default new ResultBusinessDart(
     new IdGenerator(),
     new CompetitionDatabase(),
     new ResultDatabase()

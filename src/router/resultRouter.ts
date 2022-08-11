@@ -1,13 +1,13 @@
 import { Router } from "express";
-import resultDardoController from "../controller/ResultDardoController";
-import resultMRasosController from "../controller/Result100MRasosController";
+import resultDartController from "../Controller/ResultDartController";
+import resultMetersController from "../Controller/Result100MetersController";
 
 export const resultRouter = Router()
 
-resultRouter.post('/register/dardo', resultDardoController.registerResultDardo)
+resultRouter.post('/register/dart', resultDartController.registerResultDart)
 
-resultRouter.post('/register/100mrasos', resultMRasosController.registerResult100MRasos)
+resultRouter.post('/register/100meters', resultMetersController.registerResult100Meters)
 
-resultRouter.get('/ranking/dardo', resultDardoController.getRankingDardo)
+resultRouter.get('/ranking/dart', resultDartController.getRankingDart)
 
-resultRouter.get('/ranking/100mrasos', resultMRasosController.getRanking100MRasos) 
+resultRouter.get('/ranking/100meters', resultMetersController.getRanking100Meters) 

@@ -1,9 +1,9 @@
-import { CustomError } from "../error/CustomError";
-import { registerResultDB, registerResultsDB } from "../model/types";
+import { CustomError } from "../CustomError/CustomError";
+import { registerResultDB, registerResultsDB } from "../Model/types";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class ResultDatabase extends BaseDatabase {
-    async registerResultDardo(input: registerResultsDB) {
+    async registerResultDart(input: registerResultsDB) {
         try {
             await BaseDatabase.connection('estante_virtual_result_dardo')
                 .insert(input)
@@ -11,7 +11,7 @@ export class ResultDatabase extends BaseDatabase {
             throw new CustomError(400, error.sqlMessage)
         }
     }
-    async registerResult100MRasos(input: registerResultDB) {
+    async registerResult100Meters(input: registerResultDB) {
         try {
             await BaseDatabase.connection('estante_virtual_result_100m_rasos')
                 .insert(input)
@@ -19,7 +19,7 @@ export class ResultDatabase extends BaseDatabase {
             throw new CustomError(400, error.sqlMessage)
         }
     }
-    async getRanking100MRasos(competition_name: string) {
+    async getRanking100Meters(competition_name: string) {
         try {
             const result = await BaseDatabase.connection('estante_virtual_result_100m_rasos')
                 .select('athlete_name', 'highest_value')
@@ -30,7 +30,7 @@ export class ResultDatabase extends BaseDatabase {
             throw new CustomError(400, error.sqlMessage)
         }
     }
-    async getRankingDardo(competition_name: string) {
+    async getRankingDart(competition_name: string) {
         try {
             const result = await BaseDatabase.connection('estante_virtual_result_dardo')
             .select('athlete_name', 'highest_value') 
